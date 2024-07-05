@@ -7,26 +7,26 @@ public class Solution {
         int answer = 0;
         var toppingLength = topping.Length;
 
-        int[] leftUniqueCounts = new int[toppingLength];
-        int[] rightUniqueCounts = new int[toppingLength];
+        int[] leftTopping = new int[toppingLength];
+        int[] RightTopping = new int[toppingLength];
 
-        HashSet<int> leftSet = new HashSet<int>();
+        HashSet<int> leftToppingSet = new HashSet<int>();
         for (int i = 0; i < toppingLength; i++)
         {
-            leftSet.Add(topping[i]);
-            leftUniqueCounts[i] = leftSet.Count;
+            leftToppingSet.Add(topping[i]);
+            leftTopping[i] = leftToppingSet.Count;
         }
 
-        HashSet<int> rightSet = new HashSet<int>();
+        HashSet<int> rightToppingSet = new HashSet<int>();
         for (int i = toppingLength - 1; i >= 0; i--)
         {
-            rightSet.Add(topping[i]);
-            rightUniqueCounts[i] = rightSet.Count;
+            rightToppingSet.Add(topping[i]);
+            RightTopping[i] = rightToppingSet.Count;
         }
 
         for (int i = 0; i < toppingLength - 1; i++)
         {
-            if (leftUniqueCounts[i] == rightUniqueCounts[i + 1])
+            if (leftTopping[i] == RightTopping[i + 1])
             {
                 answer++;
             }
