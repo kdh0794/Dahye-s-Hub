@@ -7,29 +7,24 @@ public class Solution {
         int totalGrid = brown + yellow;
 
         int column = brown / 2;
-        int row = column;
-
-        HashSet<(int x, int y)> gridHash = new HashSet<(int x, int y)>();
 
         while (column > 0)
         {
-            if (totalGrid % column == 0 && gridHash.Contains((column, row)) == false)
+            if (totalGrid % column == 0)
             {
-                gridHash.Add((column, totalGrid / column));
-            }
-            column--;
-        }
+                var row = totalGrid / column;
 
-        foreach(var grid in gridHash)
-        {
-            if(grid.x >= grid.y)
-            {
-                if((grid.x - 2) * (grid.y - 2) == yellow)
+                if(column >= row)
                 {
-                    answerList.Add(grid.x);
-                    answerList.Add(grid.y);
+                    if((column - 2) * (row - 2) == yellow)
+                    {
+                        answerList.Add(column);
+                        answerList.Add(row);
+                        break;
+                    }
                 }
             }
+            column--;
         }
 
         return answerList.ToArray();
